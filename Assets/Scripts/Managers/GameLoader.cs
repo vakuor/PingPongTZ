@@ -7,8 +7,8 @@ using UnityEngine.UI;
 
 public class GameLoader : MonoBehaviour
 {
-    public Animator fadeAnimator;
-    public Image fadeImage;
+    [SerializeField] private Animator fadeAnimator;
+    private Image fadeImage;
     float transitionTime = 0.5f;
     int progress = 0;
     public int Progress { get { return progress; } }
@@ -24,7 +24,7 @@ public class GameLoader : MonoBehaviour
 
     IEnumerator LoadAsync(int sceneIndex){
         fadeImage.raycastTarget = true;
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(1.2f);
         AsyncOperation o = SceneManager.LoadSceneAsync(sceneIndex);
         o.allowSceneActivation = false;
         while(o.progress < 0.9f){
